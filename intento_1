@@ -1,0 +1,23 @@
+import pandas as pd
+import os
+
+print(os.path.abspath(__file__))
+train_df = pd.read_json('train_df = pd.read_json(r'C:\Users\angel\OneDrive\Escritorio\Proyecto danone impacto ambiental\train_products.json')
+print(train_df.head())
+test_df = pd.read_json('C:\Users\angel\OneDrive\Escritorio\Proyecto danone impacto ambiental\test_products.json')
+train_df['ecoscore_grade'] = train_df['ecoscore_grade'].map({'a': 5, 'b': 4, 'c': 3, 'd': 2, 'e': 1})
+from sklearn.linear_model import LogisticRegression
+
+X_train = train_df.drop(['id', 'product_name', 'ecoscore_grade'], axis=1)
+y_train = train_df['ecoscore_grade']
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+X_test = test_df.drop(['id', 'product_name', 'ecoscore_grade'], axis=1)
+y_test = test_df['ecoscore_grade']
+
+y_pred = model.predict(X_test)
+from sklearn.metrics import accuracy_score
+
+accuracy = accuracy_score(y_test, y_pred)
+print('Accuracy:', accuracy)
