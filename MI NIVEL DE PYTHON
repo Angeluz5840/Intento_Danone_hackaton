@@ -1,0 +1,35 @@
+productos = ["Danone", "Bonafont"]
+producto = input("El producto que deseas validar es de Danone? o Bonafont?: ")
+
+if producto in productos:
+    if producto == "Bonafont":
+        productos_bonafont = ["PET 1.0", "PET 1.5", "PET 2.0", "PET garrafón de 20 litros", "Líquido producción"]
+        producto_bonafont = input(f"Ingrese un producto de Bonafont ({productos_bonafont}): ")
+        if producto_bonafont in productos_bonafont:
+            impacto_ambiental = input("Ingrese el impacto ambiental del producto en una escala de 1-10: ")
+            print(f"El impacto ambiental del producto {producto_bonafont} es {impacto_ambiental}.")
+        else:
+            print("El producto ingresado no es válido.")
+    elif producto == "Danone":
+        productos_danone = ["Activia pote .225", "Benegastro pote .240", "Danmix pote .110", "Danone mix pote .110", "DNP pote .220", "DNP pote .350", "DNP pote .435", "Danone pote .220", "Danone pote .435", "Sparta pote .080"]
+        producto_danone = input(f"Ingrese un producto de Danone ({productos_danone}): ")
+        if producto_danone in productos_danone:
+            impacto_ambiental = input("Ingrese el impacto ambiental del producto en una escala de 1-10: ")
+            print(f"El impacto ambiental del producto {producto_danone} es {impacto_ambiental}.")
+        else:
+            print("El producto ingresado no es válido.")
+    else:
+        impactos_ambientales = ["bajo", "medio", "alto"]
+        impacto_ambiental = random.choice(impactos_ambientales)
+        print(f"El impacto ambiental del producto {producto} es {impacto_ambiental}.")
+else:
+    print("El producto ingresado no es válido.")
+if int(impacto_ambiental) >= 1 and int(impacto_ambiental) <= 3:
+    print("El impacto ambiental del producto es bajo.")
+elif int(impacto_ambiental) >= 4 and int(impacto_ambiental) <= 6:
+    print("El impacto ambiental del producto es medio.")
+elif int(impacto_ambiental) >= 7 and int(impacto_ambiental) <= 10:
+    print("El impacto ambiental del producto es alto.")
+else:
+    print("El valor ingresado no es válido.")
+print("\nGracias por interactuar con nuestro programa en nombre del equipo de IT.")   
